@@ -25,7 +25,7 @@ def main():
     os.makedirs('func', exist_ok=True)
 
     parser = argparse.ArgumentParser(
-        description='快速键入工具 v2.2.1\nBy FeSo4a\n使用MIT许可证',
+        description='快速键入工具 v2.2.2\nBy FeSo4a\n使用MIT许可证',
         epilog='''
         示例: InputScripter --key=a --key=b --key=c --time=0.5
              InputScripter --press=2 --press=3 --press=6

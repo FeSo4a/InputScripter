@@ -11,7 +11,9 @@ def auto_input_text(text: str) -> None:
     :param text: 要输入的文本（支持中文/英文/符号）
     :param delay: 复制后等待时间（秒），防止粘贴失败
     """
-    # 1. 复制到剪贴板
+    # 1. 复制到剪贴板（保存先前内容）
+    temp_text = pyperclip.paste()
+
     pyperclip.copy(text)
     print('键入将在2s后开始')
     time.sleep(2)
@@ -23,3 +25,7 @@ def auto_input_text(text: str) -> None:
         keyboard.send('cmd+v')
     else:  # Windows / Linux
         keyboard.send('ctrl+v')
+
+    time.sleep(0.03)
+    # 恢复
+    pyperclip.copy(temp_text)
