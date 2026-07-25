@@ -1,9 +1,32 @@
 import argparse
 import os
+from rich_argparse import RawDescriptionRichHelpFormatter
 from typing import *
 
 from operation import *
 from write_text import *
+
+epilog = '''\
+        示例: InputScripter --key=a --key=b --key=c --time=0.5
+             InputScripter --press=2 --press=3 --press=6
+
+        宏写法：
+        [
+          {
+            "trigger": "触发按键",
+            "options": [
+              操作
+            ]
+          },
+          ...
+        ]
+        操作写法：
+        {"key": "模拟按下的按键", "time": 时间（秒）}
+        或
+        {"mouse": "模拟按下的鼠标按键", "time": 时间（秒）}
+        或
+        {"message": "想要键入的文本", "time": 时间（秒）}
+        '''
 
 standard_keys: Final[list] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -25,27 +48,9 @@ def main():
     os.makedirs('func', exist_ok=True)
 
     parser = argparse.ArgumentParser(
-        description='快速键入工具 v2.2.2\nBy FeSo4a\n使用MIT许可证',
-        epilog='''
-        示例: InputScripter --key=a --key=b --key=c --time=0.5
-             InputScripter --press=2 --press=3 --press=6
-        宏写法：
-        [
-          {
-            "trigger":"触发按键","options":[
-              操作
-            ]
-          },
-          ...
-        ]
-        操作写法：
-        {"key":"模拟按下的按键","time":时间（秒）}
-        或
-        {"mouse":"模拟按下的鼠标按键","time":时间（秒）}
-        或
-        {"message":"想要键入的文本","time":时间（秒）}
-        ''',
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        description='快速键入工具 v2.2.3 | By FeSo4a | 使用MIT许可证',
+        epilog=epilog,
+        formatter_class=RawDescriptionRichHelpFormatter
     )
 
     # 创建互斥组
