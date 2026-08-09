@@ -1,0 +1,12 @@
+[project]
+name = "inputscripter"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "argparse>=1.4.0",
+    "keyboard>=0.13.5",
+    "mouse>=0.7.1",
+    "pyperclip>=1.11.0",
+]
